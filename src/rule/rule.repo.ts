@@ -60,6 +60,7 @@ export class RuleRepo {
   }
 
   public async estimatedCount() {
-    return this.ruleModel.estimatedDocumentCount()
+    const result = await this.ruleModel.estimatedDocumentCount();
+    return result;
   }
 }
