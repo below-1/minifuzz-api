@@ -8,6 +8,7 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { AuthMiddleware } from './auth/auth.middleware';
 import { SessionModule } from './session/session.module';
+import { QuestionModule } from './question/question.module';
 
 @Module({
   imports: [
@@ -22,7 +23,8 @@ import { SessionModule } from './session/session.module';
     RuleModule,
     UserModule,
     AuthModule,
-    SessionModule
+    SessionModule,
+    QuestionModule,
   ],
   controllers: [AppController],
   providers: [AppService],

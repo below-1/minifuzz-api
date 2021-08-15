@@ -36,4 +36,30 @@ export class SessionController {
     return session;
   }
 
+  @Get()
+  @Roles('ADMIN', 'USER')
+  async findForUser(
+    @Query('page', new DefaultValuePipe(0)) page: number,
+    @Query('perPage', new DefaultValuePipe(10)) perPage: number
+  ) {
+    const currentUser = await this.userService.currentUser();
+    console.log(currentUser);
+    const result = await this.sessionRepo.findForUser(currentUser._id, { page, perPage });
+    return result;
+  }
+
+  @Get('/:id')
+  @Roles('ADMIN', 'USER')
+  async findOne(@Param('id') id: string) {
+    const session = await this.sessionRepo.findOne(id)
+    return session
+  }
+
+  @Delete('/:id')
+  @Roles('ADMIN', 'USER')
+  async remove(@Param('id') id: string) {
+    const result = this.sessionRepo.remove(id)
+    return result
+  }
+
 }

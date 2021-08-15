@@ -23,10 +23,29 @@ export class SessionRepo {
   }
 
   async find(pagingOptions: PagingOptions) {
+    
+  }
+
+  async findForUser(id: string, pagingOptions: PagingOptions) {
+    const { page, perPage } = pagingOptions;
     const totalItems = await this.sessionModel.estimatedDocumentCount();
+    const skip = page * perPage;
+    const totalPage = Math.ceil(totalItems / perPage);
+    const items = await this.sessionModel
+      .find({ user: Types.ObjectId(id) })
+      .limit(perPage)
+      .skip(skip);
+    return {
+      totalItems,
+      totalPage,
+      page,
+      perPage,
+      items
+    }
   }
 
   async findOne(id: string) {
-    
+    const session = await this.sessionModel.findById(id);
+    return session;
   }
 }

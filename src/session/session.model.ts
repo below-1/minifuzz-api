@@ -42,7 +42,7 @@ export class Session {
   end: Date;
 
   @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'User'  })
-  user: User;
+  user: Types.ObjectId;
 }
 
 export const SessionSchema = SchemaFactory.createForClass(Session);
