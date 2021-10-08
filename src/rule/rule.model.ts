@@ -12,6 +12,9 @@ export class Rule {
   @Prop({ required: true })
   consequence: string;
 
+  @Prop()
+  name: string;
+
   @Prop({ type: Date, default: () => new Date() })
   createdAt: Date;
 
