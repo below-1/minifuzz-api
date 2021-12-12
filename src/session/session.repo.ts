@@ -34,7 +34,8 @@ export class SessionRepo {
     const items = await this.sessionModel
       .find({ user: Types.ObjectId(id) })
       .limit(perPage)
-      .skip(skip);
+      .skip(skip)
+      .sort({ end: 'desc' });
     return {
       totalItems,
       totalPage,

@@ -40,7 +40,7 @@ export class SessionController {
   @Roles('ADMIN', 'USER')
   async findForUser(
     @Query('page', new DefaultValuePipe(0)) page: number,
-    @Query('perPage', new DefaultValuePipe(10)) perPage: number
+    @Query('perPage', new DefaultValuePipe(1000)) perPage: number
   ) {
     const currentUser = await this.userService.currentUser();
     console.log(currentUser);

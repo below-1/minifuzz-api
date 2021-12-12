@@ -69,7 +69,6 @@ const questions = [
 ]
 
 const answers: String[] = [
-  'Tidak Memiliki Perilaku Kecanduan',
   'Salience',
   'Euphoria',
   'Tolerance',
